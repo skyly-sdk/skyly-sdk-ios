@@ -1,6 +1,5 @@
 # Skyly
 
-[![CI Status](https://img.shields.io/travis/Philippe Auriach/Skyly.svg?style=flat)](https://travis-ci.org/Philippe Auriach/Skyly)
 [![Version](https://img.shields.io/cocoapods/v/Skyly.svg?style=flat)](https://cocoapods.org/pods/Skyly)
 [![License](https://img.shields.io/cocoapods/l/Skyly.svg?style=flat)](https://cocoapods.org/pods/Skyly)
 [![Platform](https://img.shields.io/cocoapods/p/Skyly.svg?style=flat)](https://cocoapods.org/pods/Skyly)
@@ -22,7 +21,7 @@ pod 'Skyly'
 
 ## Author
 
-Philippe Auriach, p.auriach@gmail.com
+Skyly, skyly.io
 
 ## License
 
