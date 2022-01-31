@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Skyly SDK for iOs, as a Pod
+Skyly SDK for iOs, as a Pod.
                        DESC
 
   s.homepage         = 'https://github.com/skyly-sdk/skyly-sdk-ios'

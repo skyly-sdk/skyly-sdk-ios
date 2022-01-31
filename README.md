@@ -6,7 +6,7 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run `pod install` from the Example directory first. Inject your API Key and Publisher ID in `AppDelegate.swift`.
 
 ## Requirements
 
