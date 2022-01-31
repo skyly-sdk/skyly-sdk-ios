@@ -1,0 +1,27 @@
+PODS:
+  - Nimble (9.2.1)
+  - Quick (4.0.0)
+  - Skyly (0.1.0)
+
+DEPENDENCIES:
+  - Nimble (~> 9.2.1)
+  - Quick (~> 4.0.0)
+  - Skyly (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Quick
+
+EXTERNAL SOURCES:
+  Skyly:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Quick: 6473349e43b9271a8d43839d9ba1c442ed1b7ac4
+  Skyly: e7022c3d4956a1ee88c41b04adcb7c1d0440a59b
+
+PODFILE CHECKSUM: 69940431b26a53162968b2536306fa7b66305ea4
+
+COCOAPODS: 1.11.2
