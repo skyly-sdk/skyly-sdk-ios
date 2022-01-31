@@ -129,7 +129,8 @@ public class Skyly: NSObject {
             }
             
             guard let elements = try? JSONDecoder().decode(Feed.self, from: data) else {
-                completion("Could not parse feed response", nil)
+                let message = String(data: data, encoding: .utf8)
+                completion("Could not parse feed response: \(String(describing: message))", nil)
                 return
             }
             

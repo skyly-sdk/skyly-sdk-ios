@@ -37,12 +37,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 14, *) {
             ATTrackingManager.requestTrackingAuthorization { authorization in
                 Skyly.shared.getOfferWall(request: request) { error, offers in
+                    if let error = error {
+                        print("ERROR \(error)")
+                    }
                     print("We got data from offerwall \(String(describing: offers))")                    
                 }
             }
         } else {
             // Fallback on earlier versions
             Skyly.shared.getOfferWall(request: request) { error, offers in
+                if let error = error {
+                    print("ERROR \(error)")
+                }
                 print("We got data from offerwall \(String(describing: offers))")
             }
         }
