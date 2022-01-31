@@ -1,0 +1,22 @@
+name: Test And lint
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Switch Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_13.2.1.app
+      - name: Install Dependences
+        run: |
+          cd Example
+          pod repo update
+          pod install
+        shell: bash
+      - name: Test and Lint
+        uses: ty0x2333/cocoapods-action@master
+        with:
+          additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 11,OS=13.0'
