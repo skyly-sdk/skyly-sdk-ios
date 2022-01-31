@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import CryptoKit
 import CommonCrypto
+import CryptoKit
 
 private func hexString(_ iterator: Array<UInt8>.Iterator) -> String {
     return iterator.map { String(format: "%02x", $0) }.joined()
