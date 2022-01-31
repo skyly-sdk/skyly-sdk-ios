@@ -2,32 +2,34 @@ import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
-import CommonCrypto
 
-public enum Gender: String {
-    case Male = "m"
-    case Female = "f"
+@objc public enum Gender: Int {
+    case Male
+    case Female
+    case Unknown
 }
 
-public struct OfferWallRequest {
+@objc
+public class OfferWallRequest: NSObject {
     /// Your unique id for the current user
-    public var userId: String
+    @objc public var userId: String
     
     /// Current zipCode of the user, should be fetched from geolocation, not from geoip
-    public var zipCode: String?
+    @objc public var zipCode: String?
     
     /// Your user's age
-    public var userAge: Int?
+    @objc public var userAge: NSNumber?
     
     /// Gender of the user, to access targetted campaigns
-    public var userGender: Gender?
+    @objc public var userGender: Gender = .Unknown
     
     /// Date at which your user did signup
-    public var userSignupDate: Date?
+    @objc public var userSignupDate: Date?
     
     /// parameters you wish to get back in your callback
-    public var callbackParameters: [String] = []
+    @objc public var callbackParameters: [String] = []
     
+    @objc
     public init(userId: String) {
         self.userId = userId
     }
@@ -36,12 +38,12 @@ public struct OfferWallRequest {
 @objc
 public class Skyly: NSObject {
     
-    public static let shared = Skyly()
+    @objc public static let shared = Skyly()
     
     private static let API_URL = "https://www.mob4pass.com"
     
-    public var apiKey: String?
-    public var publisherId: String?
+    @objc public var apiKey: String?
+    @objc public var publisherId: String?
     
     private override init() {}
     
@@ -49,6 +51,7 @@ public class Skyly: NSObject {
     ///
     /// - Warning: Do NOT use the wall unless you got specific authorization from the user to collect and share those personal data for advertising
     ///
+    @objc
     public func getOfferWall(request: OfferWallRequest, completion: @escaping (_ error: String?, _ offers: [FeedElement]?) -> ()) {
         
         guard let publisherId = self.publisherId, let apiKey = self.apiKey else {
@@ -82,12 +85,17 @@ public class Skyly: NSObject {
             "is_tablet": OfferWallParametersUtils.getCurrentDevice() == .iPad ? "1" : "0",
             "country": Locale.current.regionCode,
             "zip": request.zipCode,
-            "user_gender": request.userGender?.rawValue,
             "ip": OfferWallParametersUtils.getIPAddress(),
         ]
         
+        if request.userGender == .Male {
+            params["user_gender"] = "m"
+        } else if request.userGender == .Female {
+            params["user_gender"] = "f"
+        }
+        
         if let userAge = request.userAge {
-            params["user_age"] = cleanNumberFormatter.string(from: userAge as NSNumber)
+            params["user_age"] = cleanNumberFormatter.string(from: userAge)
         }
         
         if let signupTimestamp = request.userSignupDate?.timeIntervalSince1970 {

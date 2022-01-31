@@ -1,14 +1,21 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '9.3'
 
 target 'Skyly_Example' do
   pod 'Skyly', :path => '../'
-
+  
   target 'Skyly_Tests' do
     inherit! :search_paths
-
+    
     pod 'Quick', '~> 4.0.0'
     pod 'Nimble', '~> 9.2.1'
   end
+  
+  
+end
+
+target 'Skyly_Example_Objc' do
+  pod 'Skyly', :path => '../'
+
 end

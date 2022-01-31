@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30C0457827A8536600BA2929 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0457727A8536600BA2929 /* AppDelegate.m */; };
+		30C0457E27A8536600BA2929 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0457D27A8536600BA2929 /* ViewController.m */; };
+		30C0458127A8536600BA2929 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C0457F27A8536600BA2929 /* Main.storyboard */; };
+		30C0458327A8536700BA2929 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30C0458227A8536700BA2929 /* Assets.xcassets */; };
+		30C0458627A8536700BA2929 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30C0458427A8536700BA2929 /* LaunchScreen.storyboard */; };
+		30C0458927A8536700BA2929 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 30C0458827A8536700BA2929 /* main.m */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -15,6 +21,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		679AB59F46AFE0CA2C8BE29A /* Pods_Skyly_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A51931D12F7AEF46BC4D8C /* Pods_Skyly_Example.framework */; };
 		EBEF2B7714179AB71A8A13D5 /* Pods_Skyly_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B99AB7865F2F2D3E6A378B66 /* Pods_Skyly_Tests.framework */; };
+		F7D04035B5192C15454387F0 /* Pods_Skyly_Example_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52C409BC22F481AE642E4008 /* Pods_Skyly_Example_Objc.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,9 +35,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16713FF680EACFB4002E37FF /* Pods-Skyly_Example_Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Example_Objc.debug.xcconfig"; path = "Target Support Files/Pods-Skyly_Example_Objc/Pods-Skyly_Example_Objc.debug.xcconfig"; sourceTree = "<group>"; };
 		21EFE71E7182341198B791CE /* Pods-Skyly_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Tests.release.xcconfig"; path = "Target Support Files/Pods-Skyly_Tests/Pods-Skyly_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		26D9D8CBC3C0DCE3F84C889C /* Pods-Skyly_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Example.release.xcconfig"; path = "Target Support Files/Pods-Skyly_Example/Pods-Skyly_Example.release.xcconfig"; sourceTree = "<group>"; };
+		30C0457427A8536600BA2929 /* Skyly_Example_Objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skyly_Example_Objc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30C0457627A8536600BA2929 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		30C0457727A8536600BA2929 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		30C0457C27A8536600BA2929 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		30C0457D27A8536600BA2929 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		30C0458027A8536600BA2929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30C0458227A8536700BA2929 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		30C0458527A8536700BA2929 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		30C0458727A8536700BA2929 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30C0458827A8536700BA2929 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3BD531EC3271A577C4BC1A21 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		52C409BC22F481AE642E4008 /* Pods_Skyly_Example_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyly_Example_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Skyly_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skyly_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +62,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7AC49B174162AF71BEB2BCB9 /* Pods-Skyly_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Example.debug.xcconfig"; path = "Target Support Files/Pods-Skyly_Example/Pods-Skyly_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		81D6AF88C5FBF9B528295BA7 /* Skyly.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Skyly.podspec; path = ../Skyly.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		868CF1010A59F46272089F77 /* Pods-Skyly_Example_Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Example_Objc.release.xcconfig"; path = "Target Support Files/Pods-Skyly_Example_Objc/Pods-Skyly_Example_Objc.release.xcconfig"; sourceTree = "<group>"; };
 		9A4F34E2FF570C3B6523ECE5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B99AB7865F2F2D3E6A378B66 /* Pods_Skyly_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skyly_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7ACF70104AB6460A8571E1 /* Pods-Skyly_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skyly_Tests.debug.xcconfig"; path = "Target Support Files/Pods-Skyly_Tests/Pods-Skyly_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +70,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		30C0457127A8536600BA2929 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7D04035B5192C15454387F0 /* Pods_Skyly_Example_Objc.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCD1AFB9204008FA782 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -74,6 +102,7 @@
 			children = (
 				F1A51931D12F7AEF46BC4D8C /* Pods_Skyly_Example.framework */,
 				B99AB7865F2F2D3E6A378B66 /* Pods_Skyly_Tests.framework */,
+				52C409BC22F481AE642E4008 /* Pods_Skyly_Example_Objc.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -85,8 +114,26 @@
 				26D9D8CBC3C0DCE3F84C889C /* Pods-Skyly_Example.release.xcconfig */,
 				CF7ACF70104AB6460A8571E1 /* Pods-Skyly_Tests.debug.xcconfig */,
 				21EFE71E7182341198B791CE /* Pods-Skyly_Tests.release.xcconfig */,
+				16713FF680EACFB4002E37FF /* Pods-Skyly_Example_Objc.debug.xcconfig */,
+				868CF1010A59F46272089F77 /* Pods-Skyly_Example_Objc.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		30C0457527A8536600BA2929 /* Skyly_Example_Objc */ = {
+			isa = PBXGroup;
+			children = (
+				30C0457627A8536600BA2929 /* AppDelegate.h */,
+				30C0457727A8536600BA2929 /* AppDelegate.m */,
+				30C0457C27A8536600BA2929 /* ViewController.h */,
+				30C0457D27A8536600BA2929 /* ViewController.m */,
+				30C0457F27A8536600BA2929 /* Main.storyboard */,
+				30C0458227A8536700BA2929 /* Assets.xcassets */,
+				30C0458427A8536700BA2929 /* LaunchScreen.storyboard */,
+				30C0458727A8536700BA2929 /* Info.plist */,
+				30C0458827A8536700BA2929 /* main.m */,
+			);
+			path = Skyly_Example_Objc;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -95,6 +142,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for Skyly */,
 				607FACE81AFB9204008FA782 /* Tests */,
+				30C0457527A8536600BA2929 /* Skyly_Example_Objc */,
 				607FACD11AFB9204008FA782 /* Products */,
 				24FF06A8C8A9622E729B680F /* Pods */,
 				0DABC276B294E166DC3E0E35 /* Frameworks */,
@@ -106,6 +154,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* Skyly_Example.app */,
 				607FACE51AFB9204008FA782 /* Skyly_Tests.xctest */,
+				30C0457427A8536600BA2929 /* Skyly_Example_Objc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +211,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		30C0457327A8536600BA2929 /* Skyly_Example_Objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30C0458C27A8536700BA2929 /* Build configuration list for PBXNativeTarget "Skyly_Example_Objc" */;
+			buildPhases = (
+				4708F584AF96249920C58480 /* [CP] Check Pods Manifest.lock */,
+				30C0457027A8536600BA2929 /* Sources */,
+				30C0457127A8536600BA2929 /* Frameworks */,
+				30C0457227A8536600BA2929 /* Resources */,
+				111B87F28D6E279DED31F080 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Skyly_Example_Objc;
+			productName = Skyly_Example_Objc;
+			productReference = 30C0457427A8536600BA2929 /* Skyly_Example_Objc.app */;
+			productType = "com.apple.product-type.application";
+		};
 		607FACCF1AFB9204008FA782 /* Skyly_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "Skyly_Example" */;
@@ -211,6 +279,10 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
+					30C0457327A8536600BA2929 = {
+						CreatedOnToolsVersion = 13.2.1;
+						ProvisioningStyle = Automatic;
+					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
@@ -238,11 +310,22 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* Skyly_Example */,
 				607FACE41AFB9204008FA782 /* Skyly_Tests */,
+				30C0457327A8536600BA2929 /* Skyly_Example_Objc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		30C0457227A8536600BA2929 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30C0458627A8536700BA2929 /* LaunchScreen.storyboard in Resources */,
+				30C0458327A8536700BA2929 /* Assets.xcassets in Resources */,
+				30C0458127A8536600BA2929 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCE1AFB9204008FA782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,6 +362,46 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Skyly_Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		111B87F28D6E279DED31F080 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Skyly_Example_Objc/Pods-Skyly_Example_Objc-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Skyly/Skyly.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Skyly.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Skyly_Example_Objc/Pods-Skyly_Example_Objc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4708F584AF96249920C58480 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skyly_Example_Objc-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -348,6 +471,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		30C0457027A8536600BA2929 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30C0457E27A8536600BA2929 /* ViewController.m in Sources */,
+				30C0457827A8536600BA2929 /* AppDelegate.m in Sources */,
+				30C0458927A8536700BA2929 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		607FACCC1AFB9204008FA782 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -376,6 +509,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		30C0457F27A8536600BA2929 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30C0458027A8536600BA2929 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30C0458427A8536700BA2929 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30C0458527A8536700BA2929 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		607FACD91AFB9204008FA782 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -395,6 +544,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		30C0458A27A8536700BA2929 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16713FF680EACFB4002E37FF /* Pods-Skyly_Example_Objc.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Skyly_Example_Objc/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Skyly-Example-Objc.Skyly-Example-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30C0458B27A8536700BA2929 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 868CF1010A59F46272089F77 /* Pods-Skyly_Example_Objc.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Skyly_Example_Objc/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.Skyly-Example-Objc.Skyly-Example-Objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		607FACED1AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -506,6 +731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -521,6 +747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -567,6 +794,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		30C0458C27A8536700BA2929 /* Build configuration list for PBXNativeTarget "Skyly_Example_Objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30C0458A27A8536700BA2929 /* Debug */,
+				30C0458B27A8536700BA2929 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		607FACCB1AFB9204008FA782 /* Build configuration list for PBXProject "Skyly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,11 +1,12 @@
 import Foundation
 
 // MARK: - FeedElement
-public struct FeedElement: Codable {
-    public let id, name, devName: String
-    public let link, icon: String
-    public let smallDescription, smallDescriptionHTML: String
-    public let actions: [Action]
+@objc
+public class FeedElement: NSObject, Codable {
+    @objc public let id, name, devName: String
+    @objc public let link, icon: String
+    @objc public let smallDescription, smallDescriptionHTML: String
+    @objc public let actions: [Action]
 
     enum CodingKeys: String, CodingKey {
         case id, name, devName = "devname", link, icon = "icone"
@@ -16,10 +17,11 @@ public struct FeedElement: Codable {
 }
 
 // MARK: - Action
-public struct Action: Codable {
-    let id: String
-    let amount: Double
-    let text, html: String
+@objc
+public class Action: NSObject, Codable {
+    @objc let id: String
+    @objc let amount: Double
+    @objc let text, html: String
 }
 
 typealias Feed = [FeedElement]
