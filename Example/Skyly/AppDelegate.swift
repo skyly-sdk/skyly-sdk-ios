@@ -8,6 +8,7 @@
 
 import UIKit
 import Skyly
+import AppTrackingTransparency
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,16 +19,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Skyly.shared.apiKey = "API_KEY"
         Skyly.shared.publisherId = "PUB_ID"
-
-        Skyly.shared.getOffers(offerType: .Incent) { error, offers in
-            print("We got data from incent offers \(String(describing: offers))")
-        }
-        Skyly.shared.getOffers(offerType: .NonIncent) { error, offers in
-            print("We got data from nonincent offers \(String(describing: offers))")
-        }
         
         // Override point for customization after application launch.
         return true
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        var request = OfferWallRequest(userId: "YOUR_USER_ID")
+        
+        request.zipCode = "75017" // optional
+        request.userAge = 31 // optional
+        request.userGender = .Male // optional
+        request.userSignupDate = Date(timeIntervalSince1970: 1643645866) // optional
+        request.callbackParameters = ["param0", "param1"] // optional
+        
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { authorization in
+                Skyly.shared.getOfferWall(request: request) { error, offers in
+                    print("We got data from offerwall \(String(describing: offers))")                    
+                }
+            }
+        } else {
+            // Fallback on earlier versions
+            Skyly.shared.getOfferWall(request: request) { error, offers in
+                print("We got data from offerwall \(String(describing: offers))")
+            }
+        }
+        
     }
     
 }

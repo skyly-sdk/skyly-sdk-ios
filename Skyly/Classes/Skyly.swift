@@ -4,11 +4,33 @@ import FoundationNetworking
 #endif
 import CommonCrypto
 
-public enum OfferType: String {
-    /// Rewarded offers, users will be rewarded with an in game credit
-    case Incent = "incent"
-    /// Non rewarded offers
-    case NonIncent = "nonincent"
+public enum Gender: String {
+    case Male = "m"
+    case Female = "f"
+}
+
+public struct OfferWallRequest {
+    /// Your unique id for the current user
+    public var userId: String
+    
+    /// Current zipCode of the user, should be fetched from geolocation, not from geoip
+    public var zipCode: String?
+    
+    /// Your user's age
+    public var userAge: Int?
+    
+    /// Gender of the user, to access targetted campaigns
+    public var userGender: Gender?
+    
+    /// Date at which your user did signup
+    public var userSignupDate: Date?
+    
+    /// parameters you wish to get back in your callback
+    public var callbackParameters: [String] = []
+    
+    public init(userId: String) {
+        self.userId = userId
+    }
 }
 
 @objc
@@ -16,49 +38,85 @@ public class Skyly: NSObject {
     
     public static let shared = Skyly()
     
-    private static let API_URL = "https://www.mobsuccess.com"
+    private static let API_URL = "https://www.mob4pass.com"
     
     public var apiKey: String?
     public var publisherId: String?
     
     private override init() {}
     
-    /// Fetch offers.
+    /// Fetch OfferWall
     ///
-    /// - Warning: the callback might not be called on the main thread, if you want to update the UI you should dispatch the result in the MainQueue before using it.
-    /// - Parameter offerType: type of offers to fetch
-    /// - Parameter callback: get called with the offers or an error
-    /// - Returns: nothing
-    public func getOffers(offerType: OfferType, completion: @escaping (_ error: String?, _ offers: [Offer]?) -> ()) {
+    /// - Warning: Do NOT use the wall unless you got specific authorization from the user to collect and share those personal data for advertising
+    ///
+    public func getOfferWall(request: OfferWallRequest, completion: @escaping (_ error: String?, _ offers: [FeedElement]?) -> ()) {
+        
         guard let publisherId = self.publisherId, let apiKey = self.apiKey else {
-            print("🛑 Skyly needs to be configured with an apiKey and publisherId before being called")
+            let error = "🛑 Skyly needs to be configured with an apiKey and publisherId before being called"
+            print(error)
+            completion(error, nil)
             return
         }
         
-        var url = URLComponents(string: "\(Skyly.API_URL)/api/offers/v2/\(offerType.rawValue)")!
+        var url = URLComponents(string: "\(Skyly.API_URL)/api/feed/v2/")!
         
-        let formatter = NumberFormatter()
-        formatter.allowsFloats = false
+        let cleanNumberFormatter = NumberFormatter()
+        cleanNumberFormatter.allowsFloats = false
         
-        let timestamp = formatter.string(from: Date().timeIntervalSince1970 as NSNumber)!
+        let timestamp = cleanNumberFormatter.string(from: Date().timeIntervalSince1970 as NSNumber)!
         guard let hash = "\(timestamp)\(apiKey)".data(using: .utf8)?.sha1 else {
-            print("FATAL: Unable to compute hash")
+            let error = "FATAL: Unable to compute hash"
+            print(error)
+            completion(error, nil)
             return
         }
         
-        let params: [String : String] = [
+        var params: [String : String?] = [
             "pubid" : publisherId,
             "timestamp" : timestamp,
-            "hash" : hash
+            "hash" : hash,
+            "userid" : request.userId,
+            "device" : OfferWallParametersUtils.getCurrentDevice().rawValue,
+            "devicemodel": UIDevice.current.localizedModel,
+            "os_version": UIDevice.current.systemVersion,
+            "is_tablet": OfferWallParametersUtils.getCurrentDevice() == .iPad ? "1" : "0",
+            "country": Locale.current.regionCode,
+            "zip": request.zipCode,
+            "user_gender": request.userGender?.rawValue,
+            "ip": OfferWallParametersUtils.getIPAddress(),
         ]
+        
+        if let userAge = request.userAge {
+            params["user_age"] = cleanNumberFormatter.string(from: userAge as NSNumber)
+        }
+        
+        if let signupTimestamp = request.userSignupDate?.timeIntervalSince1970 {
+            params["user_signup_timestamp"] = cleanNumberFormatter.string(from: signupTimestamp as NSNumber)
+        }
+        
+        if let idfa = OfferWallParametersUtils.getIDFA() {
+            params["idfa"] = idfa
+            params["idfasha1"] = idfa.data(using: .utf8)?.sha1
+        }
+        
+        for i in 0..<request.callbackParameters.count {
+            let param = request.callbackParameters[i]
+            params["pub\(i)"] = param
+        }
         
         var items: [URLQueryItem] = []
         for (key, value) in params {
-            items.append(URLQueryItem(name: key, value: value))
+            if let value = value {
+                items.append(URLQueryItem(name: key, value: value))
+            }
         }
         url.queryItems = items
         
-        print("calling \(url.url!)")
+#if DEBUG
+        print("###################")
+        print("Calling Offerwall : \(url.url!)")
+        print("###################")
+#endif
         
         var request = URLRequest(url: url.url!, timeoutInterval: 30)
         request.httpMethod = "GET"
@@ -69,13 +127,13 @@ public class Skyly: NSObject {
                 completion(String(describing: error), nil)
                 return
             }
-
-            guard let offers = try? JSONDecoder().decode(JSONOffers.self, from: data) else {
-                completion("Could not parse response", nil)
+            
+            guard let elements = try? JSONDecoder().decode(Feed.self, from: data) else {
+                completion("Could not parse feed response", nil)
                 return
             }
             
-            completion(nil, offers.map { Offer(fromJSON: $0) })
+            completion(nil, elements)
         }
         
         task.resume()
