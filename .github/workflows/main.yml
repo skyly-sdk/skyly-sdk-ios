@@ -19,4 +19,6 @@ jobs:
       - name: Test and Lint
         uses: ty0x2333/cocoapods-action@master
         with:
+          workspace: Example/Skyly.xcworkspace
+          scheme: Skyly-Example
           additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.2'
