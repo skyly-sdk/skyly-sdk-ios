@@ -4,11 +4,12 @@
 [![License](https://img.shields.io/cocoapods/l/Skyly.svg?style=flat)](https://cocoapods.org/pods/Skyly)
 [![Platform](https://img.shields.io/cocoapods/p/Skyly.svg?style=flat)](https://cocoapods.org/pods/Skyly)
 
+## Full Documentation
+
+[Access the full documentation here >](https://mobsuccess.notion.site/Skyly-iOS-SDK-d4c1ff68a3584b0e9fb5bb8a77597f10)
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first. Inject your API Key and Publisher ID in `AppDelegate.swift`.
-
-## Requirements
 
 ## Installation
 
