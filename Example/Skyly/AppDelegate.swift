@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Skyly.shared.apiKey = "API_KEY"
         Skyly.shared.publisherId = "PUB_ID"
+        Skyly.shared.apiDomain = "www.mob4pass.com" // optional
         
         // Override point for customization after application launch.
         return true
@@ -26,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        var request = OfferWallRequest(userId: "YOUR_USER_ID")
+        let request = OfferWallRequest(userId: "YOUR_USER_ID")
         
         request.zipCode = "75017" // optional
         request.userAge = 31 // optional
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Skyly.shared.getOfferWall(request: request) { error, offers in
                     if let error = error {
                         print("ERROR \(error)")
+                        return
                     }
                     print("We got data from offerwall \(String(describing: offers))")                    
                 }
@@ -48,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Skyly.shared.getOfferWall(request: request) { error, offers in
                 if let error = error {
                     print("ERROR \(error)")
+                    return
                 }
                 print("We got data from offerwall \(String(describing: offers))")
             }
