@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Skyly'
-  s.version          = '0.1.0'
+  s.version          = ENV['LIB_VERSION'] || '0.1.0' #fallback to last published version
   s.summary          = 'Skyly SDK for publishers.'
   s.swift_versions   = '5.5.2'
 
