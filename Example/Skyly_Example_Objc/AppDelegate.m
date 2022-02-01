@@ -22,6 +22,7 @@
     
     Skyly.shared.apiKey = @"API_KEY";
     Skyly.shared.publisherId = @"PUB_ID";
+    Skyly.shared.apiDomain = @"www.mob4pass.com"; // optional
     
     return YES;
 }

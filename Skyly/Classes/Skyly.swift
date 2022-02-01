@@ -40,9 +40,8 @@ public class Skyly: NSObject {
     
     @objc public static let shared = Skyly()
     
-    private static let API_URL = "https://www.mob4pass.com"
-    
     @objc public var apiKey: String?
+    @objc public var apiDomain: String = "www.mob4pass.com"
     @objc public var publisherId: String?
     
     private override init() {}
@@ -61,7 +60,7 @@ public class Skyly: NSObject {
             return
         }
         
-        var url = URLComponents(string: "\(Skyly.API_URL)/api/feed/v2/")!
+        var url = URLComponents(string: "https://\(self.apiDomain)/api/feed/v2/")!
         
         let cleanNumberFormatter = NumberFormatter()
         cleanNumberFormatter.allowsFloats = false
