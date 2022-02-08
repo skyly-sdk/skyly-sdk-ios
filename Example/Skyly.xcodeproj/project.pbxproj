@@ -302,6 +302,7 @@
 				English,
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 607FACC71AFB9204008FA782;
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;

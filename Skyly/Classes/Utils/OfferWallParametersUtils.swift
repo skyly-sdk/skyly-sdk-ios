@@ -5,8 +5,9 @@
 //  Created by Philippe Auriach on 31/01/2022.
 //
 
-import Foundation
 import AdSupport
+import Foundation
+import CoreTelephony
 import AppTrackingTransparency
 
 public enum Device: String {
@@ -75,5 +76,33 @@ class OfferWallParametersUtils {
         }
         
         return ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    static func getLocale() -> Locale {
+        if let preferred = Locale.preferredLanguages.first {
+            return Locale(identifier: preferred)
+        }
+        return Locale.current
+    }
+    
+    static func getCarrierCode() -> String? {
+        let networkInfo = CTTelephonyNetworkInfo()
+        if #available(iOS 12.0, *) {
+            let carriers = networkInfo.serviceSubscriberCellularProviders
+
+            if let carrier = carriers?.values.first(where: { $0.carrierName != nil }) {
+                if let MCC = carrier.mobileCountryCode, let MNC = carrier.mobileNetworkCode {
+                    return "\(MCC)-\(MNC)"
+                }
+            }
+        }
+        // Fallback on earlier versions
+        if let carrier = networkInfo.subscriberCellularProvider {
+            if let MCC = carrier.mobileCountryCode, let MNC = carrier.mobileNetworkCode {
+                return "\(MCC)-\(MNC)"
+            }
+        }
+
+        return nil
     }
 }
