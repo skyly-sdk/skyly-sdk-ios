@@ -73,6 +73,8 @@ public class Skyly: NSObject {
             return
         }
         
+        let locale = OfferWallParametersUtils.getLocale()
+
         var params: [String : String?] = [
             "pubid" : publisherId,
             "timestamp" : timestamp,
@@ -82,10 +84,12 @@ public class Skyly: NSObject {
             "devicemodel": UIDevice.current.localizedModel,
             "os_version": UIDevice.current.systemVersion,
             "is_tablet": OfferWallParametersUtils.getCurrentDevice() == .iPad ? "1" : "0",
-            "country": Locale.current.regionCode,
+            "country": locale.regionCode,
+            "locale": locale.identifier.starts(with: "fr") ? "fr" : "en",
             "zip": request.zipCode,
             "ip": OfferWallParametersUtils.getIPAddress(),
-        ]
+            "carrier": OfferWallParametersUtils.getCarrierCode()
+        ]        
         
         if request.userGender == .Male {
             params["user_gender"] = "m"
