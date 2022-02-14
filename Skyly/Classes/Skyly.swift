@@ -81,7 +81,7 @@ public class Skyly: NSObject {
             "hash" : hash,
             "userid" : request.userId,
             "device" : OfferWallParametersUtils.getCurrentDevice().rawValue,
-            "devicemodel": UIDevice.current.localizedModel,
+            "devicemodel": OfferWallParametersUtils.getDeviceModelCode(),
             "os_version": UIDevice.current.systemVersion,
             "is_tablet": OfferWallParametersUtils.getCurrentDevice() == .iPad ? "1" : "0",
             "country": locale.regionCode,
