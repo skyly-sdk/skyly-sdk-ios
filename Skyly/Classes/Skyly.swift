@@ -87,7 +87,6 @@ public class Skyly: NSObject {
             "country": locale.regionCode,
             "locale": locale.identifier.starts(with: "fr") ? "fr" : "en",
             "zip": request.zipCode,
-            "ip": OfferWallParametersUtils.getIPAddress(),
             "carrier": OfferWallParametersUtils.getCarrierCode()
         ]        
         
