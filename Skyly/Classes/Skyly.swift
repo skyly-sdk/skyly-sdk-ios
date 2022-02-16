@@ -1,4 +1,6 @@
 import Foundation
+import WebKit
+
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
@@ -7,6 +9,16 @@ import FoundationNetworking
     case Male
     case Female
     case Unknown
+}
+
+@objc public enum HostedOfferwallPresentationMode: Int {
+    case webView
+    case browser
+}
+
+enum SkylyEndpoint: String {
+    case apiFeedV2 = "/api/feed/v2"
+    case hostedWall = "/wall"
 }
 
 @objc
@@ -35,6 +47,10 @@ public class OfferWallRequest: NSObject {
     }
 }
 
+enum SkylyError: Error {
+    case error(message: String)
+}
+
 @objc
 public class Skyly: NSObject {
     
@@ -46,35 +62,24 @@ public class Skyly: NSObject {
     
     private override init() {}
     
-    /// Fetch OfferWall
-    ///
-    /// - Warning: Do NOT use the wall unless you got specific authorization from the user to collect and share those personal data for advertising
-    ///
-    @objc
-    public func getOfferWall(request: OfferWallRequest, completion: @escaping (_ error: String?, _ offers: [FeedElement]?) -> ()) {
-        
+    func getParameterizedUrl(request: OfferWallRequest, endpoint: SkylyEndpoint) throws -> URL {
         guard let publisherId = self.publisherId, let apiKey = self.apiKey else {
             let error = "🛑 Skyly needs to be configured with an apiKey and publisherId before being called"
-            print(error)
-            completion(error, nil)
-            return
+            throw SkylyError.error(message: error)
         }
         
-        var url = URLComponents(string: "https://\(self.apiDomain)/api/feed/v2/")!
+        var url = URLComponents(string: "https://\(self.apiDomain)\(endpoint.rawValue)")!
         
         let cleanNumberFormatter = NumberFormatter()
         cleanNumberFormatter.allowsFloats = false
         
         let timestamp = cleanNumberFormatter.string(from: Date().timeIntervalSince1970 as NSNumber)!
         guard let hash = "\(timestamp)\(apiKey)".data(using: .utf8)?.sha1 else {
-            let error = "FATAL: Unable to compute hash"
-            print(error)
-            completion(error, nil)
-            return
+            throw SkylyError.error(message: "FATAL: Unable to compute hash")
         }
         
         let locale = OfferWallParametersUtils.getLocale()
-
+        
         var params: [String : String?] = [
             "pubid" : publisherId,
             "timestamp" : timestamp,
@@ -88,7 +93,7 @@ public class Skyly: NSObject {
             "locale": locale.identifier.starts(with: "fr") ? "fr" : "en",
             "zip": request.zipCode,
             "carrier": OfferWallParametersUtils.getCarrierCode()
-        ]        
+        ]
         
         if request.userGender == .Male {
             params["user_gender"] = "m"
@@ -122,31 +127,119 @@ public class Skyly: NSObject {
         }
         url.queryItems = items
         
-#if DEBUG
-        print("###################")
-        print("Calling Offerwall : \(url.url!)")
-        print("###################")
-#endif
-        
-        var request = URLRequest(url: url.url!, timeoutInterval: 30)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                print("ERROR" + String(describing: error))
-                completion(String(describing: error), nil)
-                return
-            }
-            
-            guard let elements = try? JSONDecoder().decode(Feed.self, from: data) else {
-                let message = String(data: data, encoding: .utf8)
-                completion("Could not parse feed response: \(String(describing: message))", nil)
-                return
-            }
-            
-            completion(nil, elements)
+        return url.url!
+    }
+    
+    /// Return a formatted URL, ready to be used in a webview or browser
+    @objc
+    public func getHostedOfferwallUrl(request: OfferWallRequest) -> URL? {
+        do {
+            return try getParameterizedUrl(request: request, endpoint: .hostedWall)
+        } catch SkylyError.error(let message) {
+            print("Error: \(message)")
+        } catch let e {
+            print("Error: \(e)")
         }
-        
-        task.resume()
+        return nil
+    }
+    
+    private var presentedNavigationViewController: UINavigationController?
+    
+    /// Show the hosted Offerwall in webview or in browser
+    @objc
+    public func showOfferwall(request: OfferWallRequest, mode: HostedOfferwallPresentationMode) {
+        do {
+            let url = try getParameterizedUrl(request: request, endpoint: .hostedWall)
+            
+            switch mode {
+            case .browser:
+                if !UIApplication.shared.canOpenURL(url){
+                    throw SkylyError.error(message: "Cannot open url")
+                }
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+                break
+            case .webView:
+                guard let viewController = UIApplication.shared.windows.first?.rootViewController else {
+                    throw SkylyError.error(message: "No root view controller found")
+                }
+                
+                let webView = WKWebView()
+                webView.load(URLRequest(url: url))
+                
+                let vc = UIViewController()
+                vc.view = webView
+                
+                let navVC = UINavigationController(rootViewController: vc)
+                
+                vc.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    barButtonSystemItem: .done,
+                    target: self,
+                    action: #selector(dismissPresentedViewController)
+                )
+                
+                self.presentedNavigationViewController = navVC
+                
+                viewController.present(navVC, animated: true, completion: nil)
+                break
+            }
+        } catch SkylyError.error(let message) {
+            print("Error: \(message)")
+        } catch let e {
+            print("Error: \(e)")
+        }
+        return
+    }
+    
+    @objc
+    func dismissPresentedViewController() {
+        self.presentedNavigationViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    /// Fetch OfferWall
+    ///
+    /// - Warning: Do NOT use the wall unless you got specific authorization from the user to collect and share those personal data for advertising
+    ///
+    @objc
+    public func getOfferWall(request: OfferWallRequest, completion: @escaping (_ error: String?, _ offers: [FeedElement]?) -> ()) {
+        do {
+            let url = try self.getParameterizedUrl(request: request, endpoint: .apiFeedV2)
+            
+#if DEBUG
+            print("###################")
+            print("Calling Offerwall : \(url)")
+            print("###################")
+#endif
+            
+            var request = URLRequest(url: url, timeoutInterval: 30)
+            request.httpMethod = "GET"
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data else {
+                    print("ERROR" + String(describing: error))
+                    completion(String(describing: error), nil)
+                    return
+                }
+                
+                guard let elements = try? JSONDecoder().decode(Feed.self, from: data) else {
+                    let message = String(data: data, encoding: .utf8)
+                    completion("Could not parse feed response: \(String(describing: message))", nil)
+                    return
+                }
+                
+                completion(nil, elements)
+            }
+            
+            task.resume()
+        } catch SkylyError.error(let message) {
+            print("Error: \(message)")
+            completion(message, nil)
+        } catch let e {
+            print("Error: \(e)")
+            completion("An unknown error ocured", nil)
+        }
     }
 }
