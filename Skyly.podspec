@@ -19,8 +19,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Skyly SDK for iOs, as a Pod. Full documentation at https://mobsuccess.notion.site/Skyly-iOS-SDK-d4c1ff68a3584b0e9fb5bb8a77597f10.
-                       DESC
+**DEPRECATED**: This SDK is deprecated and will be removed in the future. Please use the new SDK: https://github.com/farly-sdk/farly-ios-sdk
+DESC
 
   s.homepage         = 'https://github.com/skyly-sdk/skyly-sdk-ios'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -31,6 +31,8 @@ Skyly SDK for iOs, as a Pod. Full documentation at https://mobsuccess.notion.sit
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'Skyly/Classes/**/*'
+
+  s.deprecated = true
   
   # s.resource_bundles = {
   #   'Skyly' => ['Skyly/Assets/*.png']
